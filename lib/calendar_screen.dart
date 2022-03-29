@@ -3,12 +3,12 @@ import 'package:table_calendar/table_calendar.dart';
 
 
 var now = DateTime.now();
-var firstDay = DateTime(now.year, now.month - 6, now.day);
-var lastDay = DateTime(now.year, now.month + 6, now.day);
+var firstDay = DateTime(1999);
+var lastDay = DateTime(2050);
 
 
-var focusedDay = DateTime.now();
-var selectedDay = DateTime.now();
+// var focusedDay = DateTime.now();
+// var selectedDay = DateTime.now();
 
 
 class CalendarScreen extends StatefulWidget {
@@ -21,7 +21,9 @@ class CalendarScreen extends StatefulWidget {
 
 class _CalendarScreenState extends State<CalendarScreen> {
 
-  CalendarFormat format = CalendarFormat.twoWeeks;
+  DateTime selectedDay = DateTime.now();
+  DateTime focusedDay = DateTime.now();
+  CalendarFormat format = CalendarFormat.month;
 
   @override
   Widget build(BuildContext context) {
@@ -31,36 +33,65 @@ class _CalendarScreenState extends State<CalendarScreen> {
           focusedDay: now, 
           firstDay: firstDay, 
           lastDay: lastDay,
+          calendarFormat: format,
+          //PRIMEIRO DIA EXIBIDO NO CALENDARIO
+          startingDayOfWeek: StartingDayOfWeek.sunday,
 
-          //calendarFormat: format,
-          startingDayOfWeek: StartingDayOfWeek.monday,
+
+          daysOfWeekVisible: true,
+          onDaySelected: (DateTime selectDay, DateTime focusDay) {
+          
+            setState(() {
+              selectedDay = selectDay;
+              focusedDay = focusDay;
+            });
+            print(focusedDay);
+          },
+
+
           availableCalendarFormats: const{
             CalendarFormat.month: 'Mês',
             CalendarFormat.week: 'Semana',
             CalendarFormat.twoWeeks: '2 Semanas',
           },
+
+
+          //CABEÇAlHO DO CALENDARIO
           headerStyle: HeaderStyle(
+            //SETINHA DA ESQUERDA
             leftChevronIcon: const Icon(
               Icons.chevron_left_outlined,
               size: 24,
               color: Colors.black54,
             ),
 
+            //SETINHA DA DIREITA
             rightChevronIcon: const Icon(
               Icons.chevron_right_outlined,
               size: 24,
               color: Colors.black54,
             ),
+            
+            
             headerPadding: EdgeInsets.zero,
             formatButtonVisible: true,
-            formatButtonShowsNext: false,
+            formatButtonShowsNext: true,
+
+            //BOTÃO PARA MUDAR O FORMATO DE EXIBIÇÃO DO CALENDARIO
             formatButtonDecoration: BoxDecoration(
               color: Color(0xAA2171B5),
               shape: BoxShape.rectangle,
               borderRadius: BorderRadius.circular(15),
            ),
-           formatButtonTextStyle: const TextStyle(color: Colors.black),
-           titleTextStyle: const TextStyle(
+
+          //ESTILO TEXTO DO BOTÃO PARA MUDAR O FORMATO DE EXIBIÇÃO DO CALENDARIO
+           formatButtonTextStyle: TextStyle(
+             color: Colors.white
+             ),
+
+
+            //ESTILO DO NOME DO MÊS
+           titleTextStyle: TextStyle(
              color: Colors.black, 
              fontWeight: FontWeight.bold,
              fontSize: 20,
@@ -69,48 +100,83 @@ class _CalendarScreenState extends State<CalendarScreen> {
          ),
 
 
+          //CONFIGURAÇÕES DO ESTILO DO CALENDARIO
           calendarStyle: CalendarStyle(
-            outsideDaysVisible: false,
-            selectedDecoration: const BoxDecoration(
-              color: Color(0xAA2171B5),
-              shape: BoxShape.rectangle,
-            ),
+            isTodayHighlighted: true,
+
+            //EXIBIÇÃO DOS DIAS DA SEMANA DO MÊS ANTERIOR OU POSTERIOR NO MÊS ATUAL
+            outsideDaysVisible: true,
 
 
-            selectedTextStyle: const TextStyle( 
-              color: Color(0xAA2171B5),
-            ),
-
-
+            //BOX DO DIA ATUAL
             todayDecoration: BoxDecoration(
               color: Color(0xAA2171B5),
               shape: BoxShape.circle,
               //borderRadius: BorderRadius.circular(30),
           ),
-          todayTextStyle: const TextStyle(
+
+          //ESTILO DO DIA ATUAL
+          todayTextStyle:  TextStyle(
             color: Colors.white,
             fontSize: 16,
             fontWeight: FontWeight.bold,
           ),
 
-          defaultDecoration: const BoxDecoration(
+
+
+
+
+          //BOX DOS DIAS DA SEMANA
+          defaultDecoration: BoxDecoration(
             color: Colors.transparent,
             shape: BoxShape.circle,
           ),
-          defaultTextStyle: const TextStyle(
+
+          //ESTILO DOS DIAS DA SEMANA
+          defaultTextStyle: TextStyle(
             color: Colors.black,
           ),
 
-          weekendDecoration: const BoxDecoration(
+
+
+
+
+          //BOX DOS DIAS DO FINAL DE SEMANA
+          weekendDecoration:  BoxDecoration(
             color: Colors.transparent,
             shape: BoxShape.circle,
           ),
 
-          weekendTextStyle: const TextStyle(
-            color: Color(0xAA2171B5),
+          //ESTILO DOS DIAS DO FINAL DE SEMANA
+          weekendTextStyle: TextStyle(
+            color: Colors.red,
+          ),
+
+
+
+
+          //BOX DO DIA SELECIONADO
+          selectedDecoration: BoxDecoration(
+            color: Colors.black,
+            shape: BoxShape.circle,
+          ),
+
+          //ESTILO DO TEXTO DO DIA SELECIONADO
+          selectedTextStyle: TextStyle( 
+            color: Colors.white,
           ),
         ),
 
+
+        selectedDayPredicate: (DateTime date){
+          return isSameDay(selectedDay, date);
+        },
+
+
+
+
+
+        //IF CRIADO PARA TRADUZIR OS NOMES DOS DIAS DA SEMANA
         calendarBuilders: CalendarBuilders(
           dowBuilder: (context, day){
             String text;
@@ -129,8 +195,12 @@ class _CalendarScreenState extends State<CalendarScreen> {
             }else {
               text = 'Qui';
             }
+
+            //ESTILO DO TEXTO DOS DIAS DA SEMANA
             return Center(
-              child: Text(text,style: const TextStyle(color: Color(0xAA2171B5),
+              child: Text(
+                text,style: const TextStyle(
+                  color: Color(0xAA2171B5),
                ),
               ),
             );
