@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:imaker/src/event.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 
@@ -21,9 +22,28 @@ class CalendarScreen extends StatefulWidget {
 
 class _CalendarScreenState extends State<CalendarScreen> {
 
+  late Map<DateTime,List<Event>> selectedEvents;
   DateTime selectedDay = DateTime.now();
   DateTime focusedDay = DateTime.now();
   CalendarFormat format = CalendarFormat.month;
+
+  TextEditingController _eventController = TextEditingController();
+
+  @override
+  void initState(){
+    selectedEvents = {};
+    super.initState();
+  }
+
+  List<Event> _getEventsfromDay(DateTime date) {
+    return selectedEvents[date] ?? [];
+  }
+
+  @override
+  void dispose(){
+    _eventController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,12 +54,15 @@ class _CalendarScreenState extends State<CalendarScreen> {
           firstDay: firstDay, 
           lastDay: lastDay,
           calendarFormat: format,
+
           //PRIMEIRO DIA EXIBIDO NO CALENDARIO
           startingDayOfWeek: StartingDayOfWeek.sunday,
 
 
           daysOfWeekVisible: true,
-          onDaySelected: (DateTime selectDay, DateTime focusDay) {
+          onDaySelected: (
+            DateTime selectDay, 
+            DateTime focusDay) {
           
             setState(() {
               selectedDay = selectDay;
@@ -56,6 +79,14 @@ class _CalendarScreenState extends State<CalendarScreen> {
           },
 
 
+          selectedDayPredicate: (DateTime date){
+            return isSameDay(selectedDay, date);
+          },
+
+
+          eventLoader: _getEventsfromDay,
+
+
           //CABEÇAlHO DO CALENDARIO
           headerStyle: HeaderStyle(
             //SETINHA DA ESQUERDA
@@ -64,6 +95,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
               size: 24,
               color: Colors.black54,
             ),
+
 
             //SETINHA DA DIREITA
             rightChevronIcon: const Icon(
@@ -74,8 +106,11 @@ class _CalendarScreenState extends State<CalendarScreen> {
             
             
             headerPadding: EdgeInsets.zero,
-            formatButtonVisible: true,
+            //BOTÃO PARA MUDAR O FORMATO DO CALENDARIO
+            formatButtonVisible: false,
+            
             formatButtonShowsNext: true,
+
 
             //BOTÃO PARA MUDAR O FORMATO DE EXIBIÇÃO DO CALENDARIO
             formatButtonDecoration: BoxDecoration(
@@ -83,6 +118,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
               shape: BoxShape.rectangle,
               borderRadius: BorderRadius.circular(15),
            ),
+
 
           //ESTILO TEXTO DO BOTÃO PARA MUDAR O FORMATO DE EXIBIÇÃO DO CALENDARIO
            formatButtonTextStyle: TextStyle(
@@ -112,9 +148,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
             todayDecoration: BoxDecoration(
               color: Color(0xAA2171B5),
               shape: BoxShape.circle,
-              //borderRadius: BorderRadius.circular(30),
           ),
-
           //ESTILO DO DIA ATUAL
           todayTextStyle:  TextStyle(
             color: Colors.white,
@@ -123,22 +157,15 @@ class _CalendarScreenState extends State<CalendarScreen> {
           ),
 
 
-
-
-
           //BOX DOS DIAS DA SEMANA
           defaultDecoration: BoxDecoration(
             color: Colors.transparent,
             shape: BoxShape.circle,
           ),
-
           //ESTILO DOS DIAS DA SEMANA
           defaultTextStyle: TextStyle(
             color: Colors.black,
           ),
-
-
-
 
 
           //BOX DOS DIAS DO FINAL DE SEMANA
@@ -146,13 +173,10 @@ class _CalendarScreenState extends State<CalendarScreen> {
             color: Colors.transparent,
             shape: BoxShape.circle,
           ),
-
           //ESTILO DOS DIAS DO FINAL DE SEMANA
           weekendTextStyle: TextStyle(
             color: Colors.red,
           ),
-
-
 
 
           //BOX DO DIA SELECIONADO
@@ -160,7 +184,6 @@ class _CalendarScreenState extends State<CalendarScreen> {
             color: Colors.black,
             shape: BoxShape.circle,
           ),
-
           //ESTILO DO TEXTO DO DIA SELECIONADO
           selectedTextStyle: TextStyle( 
             color: Colors.white,
@@ -168,15 +191,6 @@ class _CalendarScreenState extends State<CalendarScreen> {
         ),
 
 
-        selectedDayPredicate: (DateTime date){
-          return isSameDay(selectedDay, date);
-        },
-
-
-
-
-
-        //IF CRIADO PARA TRADUZIR OS NOMES DOS DIAS DA SEMANA
         calendarBuilders: CalendarBuilders(
           dowBuilder: (context, day){
             String text;
@@ -204,9 +218,59 @@ class _CalendarScreenState extends State<CalendarScreen> {
                ),
               ),
             );
+
           },
         ),
        ),
+
+       ..._getEventsfromDay(selectedDay).map((
+        Event event) => ListTile(
+          title: Text(event.title),
+       ), 
+      ),
+
+       FloatingActionButton.extended(
+         backgroundColor: Color(0xAA2171B5),
+         onPressed: () => showDialog(
+           context: context, 
+           builder: (context) => AlertDialog(
+             title: Text("Adicionar Evento"),
+             content: TextFormField(controller: _eventController,
+             ),
+             actions: [
+               TextButton(
+                 onPressed: () => Navigator.pop(context), 
+                 child: Text("Cancelar")
+                 ),
+                 TextButton(
+                 onPressed: () {
+                   if(_eventController.text.isEmpty){
+                  
+                   }else {
+                     if (selectedEvents[selectedDay] != null) {
+                       selectedEvents[selectedDay]!.add(
+                         Event(title: _eventController.text),
+                       );
+                     } else {
+                       selectedEvents[selectedDay] = [
+                         Event(title: _eventController.text)
+                       ];
+                     }
+                     
+                   }
+                    Navigator.pop(context);
+                     _eventController.clear();
+                     setState(() {});
+                     return;
+                 }, 
+                 child: Text("Ok")
+                 ),
+              ],
+            ),
+           ), 
+         label: Text("Adicionar um novo evento"),
+         icon: Icon(Icons.add,),
+         ),
       ],
     );
   }
