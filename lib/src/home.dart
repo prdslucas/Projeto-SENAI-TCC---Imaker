@@ -32,7 +32,7 @@ class HomeApp extends StatelessWidget{
                color: Colors.white,
                ),
 
-               Text("Agenda",
+               Text("  Agenda",
                style: TextStyle(
                  color: Colors.white,
                  fontSize: 45,
@@ -41,7 +41,7 @@ class HomeApp extends StatelessWidget{
               ),
 
                IconButton(
-                 padding: EdgeInsets.only(left: 120),
+                 padding: EdgeInsets.only(left: 100),
                  onPressed: () {
                     Navigator.pushNamed(context, '/agenda');
                  }, 
@@ -53,8 +53,7 @@ class HomeApp extends StatelessWidget{
                ),
               ],
             ),
-          
-     ),
+         ),
 
      
       //CRIAÇÃO DO MENU LATERAL

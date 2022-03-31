@@ -133,6 +133,53 @@ class _CalendarScreenState extends State<CalendarScreen> {
              fontSize: 20,
            ),
            titleCentered: true,
+
+
+            //TRADUÇÃO DO NOME DOS MESES
+           titleTextFormatter: (date, locale) {
+              String month;
+              switch(date.month){
+                case DateTime.january:
+                month = "Janeiro  ";
+                break;
+                case DateTime.february:
+                month = "Fevereiro  ";
+                break;
+                case DateTime.march:
+                month = "Março  ";
+                break;
+                case DateTime.april:
+                month = "Abril  ";
+                break;
+                case DateTime.may:
+                month = "Maio  ";
+                break;
+                case DateTime.june:
+                month = "Junho  ";
+                break;
+                case DateTime.july:
+                month = "Julho  ";
+                break;
+                case DateTime.august:
+                month = "Agosto  ";
+                break;
+                case DateTime.september:
+                month = "Setembro  ";
+                break;
+                case DateTime.october:
+                month = "Outubro  ";
+                break;
+                case DateTime.november:
+                month = "Novembro  ";
+                break;
+                case DateTime.december:
+                month = "Dezembro  ";
+                break;
+              default:
+                month = "Error";
+              }
+              return"$month${date.year}";
+           },
          ),
 
 
@@ -191,6 +238,9 @@ class _CalendarScreenState extends State<CalendarScreen> {
         ),
 
 
+        
+
+
         calendarBuilders: CalendarBuilders(
           dowBuilder: (context, day){
             String text;
@@ -218,8 +268,12 @@ class _CalendarScreenState extends State<CalendarScreen> {
                ),
               ),
             );
-
           },
+          markerBuilder: (context, day, events) {
+            if(events.isNotEmpty){
+
+            }
+          }
         ),
        ),
 
@@ -268,7 +322,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
               ],
             ),
            ), 
-         label: Text("Adicionar um novo evento"),
+         label: Text("Adicionar evento"),
          icon: Icon(Icons.add,),
          ),
       ],
