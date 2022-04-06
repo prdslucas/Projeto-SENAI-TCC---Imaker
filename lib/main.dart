@@ -21,7 +21,6 @@ class MainApp extends StatelessWidget{
        routes: {
          '/home':(context) => HomeApp(),
          '/agenda':(context) => Agenda(),
-        //  '/casa': (context) => CasaApp(),
          },
 
          initialRoute: '/home',
