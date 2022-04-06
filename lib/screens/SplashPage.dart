@@ -122,7 +122,7 @@ class _InitScreenState extends State<InitScreen> {
                 borderRadius: BorderRadius.circular(50),
                 side: BorderSide(color: Colors.white, width: 2),
               ),
-              color: Color(0XAA2171B5),
+              color: Color(0XAA2171B6),
             ),
           ),
           
