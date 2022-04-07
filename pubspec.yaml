@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 name: tcc
+=======
+name: imaker
+>>>>>>> 31ce2c4f8e47348edcd57b08e76185d1e75fcfd3
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -18,7 +22,11 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
+<<<<<<< HEAD
   sdk: ">=2.15.0 <3.0.0"
+=======
+  sdk: ">=2.12.0 <3.0.0"
+>>>>>>> 31ce2c4f8e47348edcd57b08e76185d1e75fcfd3
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -29,15 +37,22 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+<<<<<<< HEAD
   get: ^4.6.1
   get_storage: ^2.0.3
   validatorless: ^1.2.1
   intl: ^0.17.0
+=======
+>>>>>>> 31ce2c4f8e47348edcd57b08e76185d1e75fcfd3
 
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+<<<<<<< HEAD
+=======
+  table_calendar: ^3.0.3
+>>>>>>> 31ce2c4f8e47348edcd57b08e76185d1e75fcfd3
 
 dev_dependencies:
   flutter_test:
@@ -65,9 +80,12 @@ flutter:
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
+<<<<<<< HEAD
   
   assets:
   - assets/images/
+=======
+>>>>>>> 31ce2c4f8e47348edcd57b08e76185d1e75fcfd3
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
