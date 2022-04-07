@@ -57,7 +57,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.0"
-<<<<<<< HEAD
   ffi:
     dependency: transitive
     description:
@@ -72,8 +71,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "6.1.2"
-=======
->>>>>>> 31ce2c4f8e47348edcd57b08e76185d1e75fcfd3
   flutter:
     dependency: "direct main"
     description: flutter
@@ -91,7 +88,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-<<<<<<< HEAD
   get:
     dependency: "direct main"
     description:
@@ -108,10 +104,6 @@ packages:
     version: "2.0.3"
   intl:
     dependency: "direct main"
-=======
-  intl:
-    dependency: transitive
->>>>>>> 31ce2c4f8e47348edcd57b08e76185d1e75fcfd3
     description:
       name: intl
       url: "https://pub.dartlang.org"
@@ -145,7 +137,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.0"
-<<<<<<< HEAD
   path_provider:
     dependency: transitive
     description:
@@ -216,7 +207,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.2.4"
-=======
   simple_gesture_detector:
     dependency: transitive
     description:
@@ -224,7 +214,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.0"
->>>>>>> 31ce2c4f8e47348edcd57b08e76185d1e75fcfd3
   sky_engine:
     dependency: transitive
     description: flutter
@@ -258,8 +247,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.0"
-<<<<<<< HEAD
-=======
   table_calendar:
     dependency: "direct main"
     description:
@@ -267,7 +254,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.5"
->>>>>>> 31ce2c4f8e47348edcd57b08e76185d1e75fcfd3
   term_glyph:
     dependency: transitive
     description:
@@ -289,7 +275,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.3.0"
-<<<<<<< HEAD
   validatorless:
     dependency: "direct main"
     description:
@@ -297,8 +282,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.1"
-=======
->>>>>>> 31ce2c4f8e47348edcd57b08e76185d1e75fcfd3
   vector_math:
     dependency: transitive
     description:
@@ -306,14 +289,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.1"
-<<<<<<< HEAD
   win32:
     dependency: transitive
     description:
       name: win32
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.4.1"
+    version: "2.5.1"
   xdg_directories:
     dependency: transitive
     description:
@@ -324,8 +306,3 @@ packages:
 sdks:
   dart: ">=2.15.0 <3.0.0"
   flutter: ">=2.8.0"
-=======
-sdks:
-  dart: ">=2.14.0 <3.0.0"
-  flutter: ">=1.17.0"
->>>>>>> 31ce2c4f8e47348edcd57b08e76185d1e75fcfd3
