@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:imaker/agenda.dart';
 import 'package:imaker/calendar_screen.dart';
+import 'package:imaker/login/cadastro.dart';
+import 'package:imaker/login/login.dart';
+import 'package:imaker/login/splashPage.dart';
 import 'package:imaker/src/home.dart';
 
 
@@ -18,13 +21,33 @@ class MainApp extends StatelessWidget{
 
 
      return MaterialApp(
-       routes: {
-         '/home':(context) => HomeApp(),
-         '/agenda':(context) => Agenda(),
-         },
+        routes: {
+        '/InitScreen':(context) => InitScreen(),
+        '/SignInScreen' :(context) => SignInScreen(), 
+        '/SignUpScreen' :(context) => SignUpScreen(),
+        '/home':(context) => HomeApp(),
+        '/agenda':(context) => Agenda(),
+      },
+      initialRoute: '/InitScreen',
 
-         initialRoute: '/home',
-    
-      );
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Auth',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: PageView(
+        children: <Widget>[
+          Scaffold(
+            body: SignInScreen(),
+          ),
+          Scaffold(
+            body: InitScreen(),
+          ),
+          Scaffold(
+            body: SignUpScreen(),
+          ),
+        ],
+      ),
+    );
   }
 }
