@@ -10,54 +10,194 @@ class HomeApp extends StatelessWidget{
         title: Text ('Protaganismo Estudantil',
         style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ), 
+
           ),
-  
 
-     body: Container(
-            color: Color(0xAA2171B5),
-            height: 100,
-            margin: EdgeInsets.symmetric(
-              horizontal: 1,
-              vertical: 0,
-              ),
 
-            child: Row(
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(10),
+     body: 
+
+     Column(
+       children: <Widget>[
+            //BOTÃO DA AGENDA 
+            Container(
+              color: Color(0xAA2171B5),
+              height: 100,
+              margin: EdgeInsets.symmetric(
+                horizontal: 1,
+                vertical: 0,
+                ),
+
+              child: Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(10),
+                    ),
+
+                Icon(Icons.calendar_today_outlined,
+                size: 40,
+                color: Colors.white,
+                ),
+
+                Text("  Agenda",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                ),
+                ),
+
+                IconButton(
+                  padding: EdgeInsets.only(left: 160),
+                  onPressed: () {
+                      Navigator.pushNamed(context, '/agenda');
+                  }, 
+                  icon: Icon(
+                    Icons.arrow_forward_ios_rounded,
+                    size: 40,
+                    color: Colors.white,
                   ),
+                ),
+                ],
 
-               Icon(Icons.calendar_today_outlined,
-               size: 40,
-               color: Colors.white,
-               ),
-
-               Text("  Agenda",
-               style: TextStyle(
-                 color: Colors.white,
-                 fontSize: 45,
-                 fontWeight: FontWeight.bold,
-               ),
-              ),
-
-               IconButton(
-                 padding: EdgeInsets.only(left: 100),
-                 onPressed: () {
-                    Navigator.pushNamed(context, '/agenda');
-                 }, 
-                 icon: Icon(
-                   Icons.arrow_forward_ios_rounded,
-                   size: 40,
-                   color: Colors.white,
-                 ),
-               ),
-              ],
+              ),               
             ),
-         ),
 
-     
-      //CRIAÇÃO DO MENU LATERAL
-      drawer: Drawer(
+            //BOTÃO DE CHECKLIST 
+            Container(
+              color: Color(0xAA2171B5),
+              height: 100,
+              margin: EdgeInsets.symmetric(
+                horizontal: 1,
+                vertical: 0,
+                ),
+
+              child: Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(10),
+                    ),
+
+                Icon(Icons.add_box_outlined,
+                size: 40,
+                color: Colors.white,
+                ),
+
+                Text("  Checklist",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                ),
+                ),
+
+                IconButton(
+                  padding: EdgeInsets.only(left: 130),
+                  onPressed: () {
+                      Navigator.pushNamed(context, '/agenda');
+                  }, 
+                  icon: Icon(
+                    Icons.arrow_forward_ios_rounded,
+                    size: 40,
+                    color: Colors.white,
+                  ),
+                ),
+                ],
+
+              ),               
+            ),
+
+            //BOTÃO DO MURAL DE FOTOS 
+            Container(
+              color: Color(0xAA2171B5),
+              height: 100,
+              margin: EdgeInsets.symmetric(
+                horizontal: 1,
+                vertical: 0,
+                ),
+
+              child: Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(10),
+                    ),
+
+                Icon(Icons.add_a_photo_outlined,
+                size: 40,
+                color: Colors.white,
+                ),
+
+                Text("  Mural de fotos",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                ),
+                ),
+
+                IconButton(
+                  padding: EdgeInsets.only(left: 50),
+                  onPressed: () {
+                      Navigator.pushNamed(context, '/agenda');
+                  }, 
+                  icon: Icon(
+                    Icons.arrow_forward_ios_rounded,
+                    size: 40,
+                    color: Colors.white,
+                  ),
+                ),
+                ],
+
+              ),               
+            ),
+
+            //BOTÃO DAS VÍDEOS AULAS 
+            Container(
+              color: Color(0xAA2171B5),
+              height: 100,
+              margin: EdgeInsets.symmetric(
+                horizontal: 1,
+                vertical: 0,
+                ),
+
+              child: Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(10),
+                    ),
+
+                Icon(Icons.ondemand_video_outlined,
+                size: 40,
+                color: Colors.white,
+                ),
+
+                Text("  Vídeo aulas",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                ),
+                ),
+
+                IconButton(
+                  padding: EdgeInsets.only(left: 85),
+                  onPressed: () {
+                      Navigator.pushNamed(context, '/agenda');
+                  }, 
+                  icon: Icon(
+                    Icons.arrow_forward_ios_rounded,
+                    size: 40,
+                    color: Colors.white,
+                  ),
+                ),
+                ],
+
+              ),               
+            ),
+            ]
+     ),
+
+     //MENU LATERAL 
+     drawer: Drawer(
         child: ListView (
            padding: EdgeInsets.zero,
            children: [
@@ -66,7 +206,7 @@ class HomeApp extends StatelessWidget{
                 decoration: BoxDecoration(
                   color: Color(0xAA2171B5),
                ),
-               
+
                child: Text('Protaganismo estudantil',
                style: TextStyle(fontSize: 20,color: Colors.white,)
                 ),
@@ -121,6 +261,14 @@ class HomeApp extends StatelessWidget{
           ],
         ),
       ),
+
     );
+
+
+
+
+
+
+
   }
 }
