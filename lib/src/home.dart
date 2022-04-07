@@ -92,7 +92,6 @@ class HomeApp extends StatelessWidget{
                  style: TextStyle(fontSize: 17),
                  ),
                  onTap: () {
-                   //Navigator.pushNamed(context, '/imoveis');
                  },
                ),
 
