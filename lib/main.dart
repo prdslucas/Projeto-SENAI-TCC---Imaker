@@ -1,21 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:imaker/agenda.dart';
 import 'package:imaker/calendar_screen.dart';
+import 'package:imaker/checklist.dart';
 import 'package:imaker/login/cadastro.dart';
 import 'package:imaker/login/login.dart';
 import 'package:imaker/login/splashPage.dart';
 import 'package:imaker/src/home.dart';
+import 'package:imaker/tarefa.dart';
 
 
-void main() => runApp(const MainApp());
 
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  
+  runApp(MainApp());
+}
 
 class MainApp extends StatelessWidget{
-   const MainApp({Key? Key}): super (key: Key);
+    MainApp({Key? Key}): super (key: Key);
 
-
+  
+  
    @override
-
+ 
 
    Widget build(BuildContext context) {
 
@@ -27,6 +34,7 @@ class MainApp extends StatelessWidget{
         '/SignUpScreen' :(context) => SignUpScreen(),
         '/home' :(context) => HomeApp(),
         '/agenda' :(context) => Agenda(),
+        '/checklist' : (context) => Checklist(),
       },
       initialRoute: '/InitScreen',
 

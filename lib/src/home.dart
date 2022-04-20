@@ -59,7 +59,7 @@ class HomeApp extends StatelessWidget{
                 ),
                 ],
 
-              ),               
+              ),
             ),
 
             //BOTÃO DE CHECKLIST 
@@ -93,7 +93,7 @@ class HomeApp extends StatelessWidget{
                 IconButton(
                   padding: EdgeInsets.only(left: 130),
                   onPressed: () {
-                      Navigator.pushNamed(context, '/agenda');
+                      Navigator.pushNamed(context, '/checklist');
                   }, 
                   icon: Icon(
                     Icons.arrow_forward_ios_rounded,
@@ -232,7 +232,7 @@ class HomeApp extends StatelessWidget{
                  style: TextStyle(fontSize: 17),
                  ),
                  onTap: () {
-                   //Navigator.pushNamed(context, '/imoveis');
+                   Navigator.pushNamed(context, '/checklist');
                  },
                ),
 
@@ -244,7 +244,7 @@ class HomeApp extends StatelessWidget{
                  style: TextStyle(fontSize: 17),
                  ),
                  onTap: () {
-                   //Navigator.pushNamed(context, '/home');
+                   //Navigator.pushNamed(context, '/tarefa');
                  },
                ),
 

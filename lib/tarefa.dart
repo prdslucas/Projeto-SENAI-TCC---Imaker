@@ -1,28 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:imaker/calendar_screen.dart';
-import 'package:intl/date_symbol_data_local.dart';
+import 'package:imaker/checklist.dart';
 
+class Tarefa extends StatefulWidget {
+  const Tarefa({ Key? key }) : super(key: key);
 
-class Agenda extends StatelessWidget {
-  const Agenda({ Key? key }) : super(key: key);
+  @override
+  State<Tarefa> createState() => _TarefaState();
+}
 
-
+class _TarefaState extends State<Tarefa> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text('Agenda', 
+          title: Text('Checklist', 
           style: TextStyle(
             fontWeight: FontWeight.bold
             ),
           ),
           backgroundColor: Color(0xAA2171B5),
         ),
-
-        body: CalendarScreen(),
-        backgroundColor: Colors.white,
+        body: Checklist(),
         drawer: Drawer(
         child: ListView (
            padding: EdgeInsets.zero,
@@ -95,8 +95,8 @@ class Agenda extends StatelessWidget {
                ),
           ],
         ),
-      ), 
-     ),
+      ),
+      ),
     );
   }
 }
